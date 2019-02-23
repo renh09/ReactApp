@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
+import { Route,Switch } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import  Customer  from './components/Customer/Customer';
+import Product from './components/Product/Product';
+import Store from './components/Store/Store';
+import Sale from './components/Sale/Sale';
+
 
 export default class App extends Component {
   displayName = App.name
@@ -11,10 +15,18 @@ export default class App extends Component {
   render() {
     return (
       <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetchdata' component={FetchData} />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/fetchdata' component={FetchData} />
+          <Route path='/customers' component={Customer} />
+          <Route path='/products' component={Product} />
+          <Route path='/stores' component={Store} />
+          <Route path='/sales' component={Sale} />
+        </Switch>
       </Layout>
+      
+       
     );
   }
 }
+

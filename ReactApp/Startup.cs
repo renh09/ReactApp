@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ReactApp.Models;
 
 namespace ReactApp
 {
@@ -21,6 +23,10 @@ namespace ReactApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
+            var connection = @"Server=tcp:reactappserver.database.windows.net,1433;Initial Catalog=ReactApp;Persist Security Info=False;User ID=renh09;Password=Renhui1012;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<ReactAppContext>(options => options.UseSqlServer(connection));
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
