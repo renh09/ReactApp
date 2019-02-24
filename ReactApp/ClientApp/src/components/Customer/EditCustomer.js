@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Segment} from 'semantic-ui-react'
+import { Button, Form, Modal, Header} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -57,34 +57,40 @@ export default class EditCustomer extends Component {
   render() {
     const { name, address} = this.state;
     return (
-      <Segment>
+      <Modal 
+        open={true} 
+        size='tiny'
+      >
+        <Header content='Edit Customer' />
+        <Modal.Content>
         <Form onSubmit={this.handleSubmit} id='submit-form'>
-          <Form.Field>
-            <label>NAME</label>
-            <Form.Input name='name' value={name} onChange={this.handleChange} />
-          </Form.Field>
-          <Form.Field>
-            <label>ADDRESS</label>
-            <Form.Input name='address' value={address} onChange={this.handleChange} />
-          </Form.Field>
-          {/* TODO */}
-        </Form>
-
-        <Button
-          content='cancel'
-          color='black'
-          as={ Link }
-          to='/customers'
-        />
-        <Button 
-          content='edit'
-          form='submit-form' 
-          color='green' 
-          icon='check' 
-          labelPosition='right'
-        />
-        
-      </Segment>
+           <Form.Field>
+             <label>NAME</label>
+             <Form.Input name='name' value={name} onChange={this.handleChange} />
+           </Form.Field>
+           <Form.Field>
+             <label>ADDRESS</label>
+             <Form.Input name='address' value={address} onChange={this.handleChange} />
+           </Form.Field>
+       </Form>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button
+            content='cancel'
+            color='black'
+            as={ Link }
+            to='/customers'
+          />
+          <Button 
+            content='edit'
+            form='submit-form' 
+            color='green' 
+            icon='check' 
+            labelPosition='right'
+          />
+        </Modal.Actions>
+    </Modal>
+      
     )
   }
 }
