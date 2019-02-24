@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch,Route,Link } from 'react-router-dom';
-import { Button ,Table, Segment,Modal} from 'semantic-ui-react';
+import { Button ,Table, Segment} from 'semantic-ui-react';
 import axios from 'axios';
 import  CreateCustomer  from './CreateCustomer';
 import EditCustomer from './EditCustomer';
