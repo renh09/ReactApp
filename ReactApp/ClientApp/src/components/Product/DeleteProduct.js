@@ -4,32 +4,25 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-export default class DeleteCustomer extends Component {
-    // state = {
-    //     redirect: false
-    // }
+export default class DeleteProduct extends Component {
+    
 
   handleClick = (e) => {
       e.preventDefault();
 
-      axios.delete(`/api/Customers/${this.props.match.params.number}`)
-      //.then(() => {this.setState({ redirect:true })})
-      .then(() => this.props.history.push('/customers'));
+      axios.delete(`/api/Products/${this.props.match.params.number}`)
+      .then(() => this.props.history.push('/products'));
   }
 
   render() {
-    // if (this.state.redirect === true) {
-    //     return (
-    //         <Redirect to="/Customers" />
-    //     )
-    // }
+   
 
     return (
         <Modal 
             open={true}
             size='tiny'
             >
-            <Header content='Delet Customer' />
+            <Header content='Delet product' />
             <Modal.Content>
                 <h3>
                 Are you sure?
@@ -40,7 +33,7 @@ export default class DeleteCustomer extends Component {
                     content='cancel'
                     color='black'
                     as={ Link }
-                    to='/customers'
+                    to='/products'
                 />
                 <Button
                     content='delete'
