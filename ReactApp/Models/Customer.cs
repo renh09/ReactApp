@@ -10,8 +10,5 @@ namespace ReactApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-
-        //Navigation Properties
-        public Sales ProductSold { get; set; }
     }
 }

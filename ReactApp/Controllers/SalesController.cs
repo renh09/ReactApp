@@ -24,7 +24,10 @@ namespace ReactApp.Controllers
         [HttpGet]
         public IEnumerable<Sales> GetSales()
         {
-            return _context.Sales;
+            return _context.Sales
+                .Include(s => s.Customer)
+                .Include(s => s.Product)
+                .Include(s => s.Store);
         }
 
         // GET: api/Sales/5
@@ -36,7 +39,15 @@ namespace ReactApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var sales = await _context.Sales.FindAsync(id);
+
+            var SalesDb = _context.Sales
+                .Include(s => s.Customer)
+                .Include(s => s.Product)
+                .Include(s => s.Store);
+
+            var sales = await SalesDb.SingleOrDefaultAsync(i => i.Id == id);
+
+      
 
             if (sales == null)
             {
